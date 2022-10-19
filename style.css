@@ -20,12 +20,13 @@ body {
     font-family: Helvetica;
 }
 h1 {
-    font-size: 35px;
+    font-size: 20px;
+    flex: 1;
 }
 h2 {
-    font-size: 20px;
+    font-size: 35px;
     font-weight: 300;
-    padding-top: 10px;
+    /* padding-top: 10px; */
 }
 #parentComment {
     background-color: #fff;
@@ -43,6 +44,9 @@ h2 {
     height: 50px;
     padding: 20px;
 }
+#topRightSide {
+    display: flex;
+}
 #subComment {
     background-color: aliceblue;
     margin: 20px 0;
@@ -50,11 +54,26 @@ h2 {
     flex-direction: column;
     /* min-height: 100%; */
 }
-#visable, #hiddenEditContent{
+#visibleContent{
     display: flex;
 
 }
-
+#subCommentContent {
+   flex: 1;
+}
+#subCommentTop {
+    display: flex;
+    padding: 20px 0 5px 0;
+    /* align-content: space-between; */
+    justify-content: space-between;
+}
+#subCommentMiddle {
+    padding: 0;
+}
+#subCommentBottom {
+    display: flex;
+    justify-content: space-between;
+}
 .button, #submitComment{
     padding: 5px;
     color: lightblue;
@@ -71,5 +90,5 @@ h2 {
 }
 
 .noDisplay {
-    /* display: none; */
+    display: none;
 }
