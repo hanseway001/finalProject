@@ -39,21 +39,33 @@ function productDelete(ctl) {
 function addComments(){
     comments.empty();
     $.each(userComments, function( index, value ) {
-        comments.append('<div id="subComment"><div id="visable"><img id="userImage" src="images/user.svg"><div id="commentDisplay"><h2>' 
-        + value.name + 
-        '</h2><h1>'
-        + value.comment + 
-        '</h1> ' +
-            '</div> ' +
-                '<div id="edit" class="button">Edit</div> ' +
-                '<button type="button" ' +
-                "onclick\'productDelete(this);\'" +
-                "class=\'btn btn-default\'>" +
-       "<span class='glyphicon glyphicon-remove' />" +
-       "</button>" +
-                '</div><div id="hiddenEditContent" class="noDisplay"><input class="toggleText"></input><div class="submit">Submit</div></div></div>' )
-    
-})
+        comments.append(
+            '<div id="subComment">' +
+                '<div id="visibleContent">' +
+                    '<img id="userImage" src="images/user.svg">' +
+                    '<div id="subCommentContent">' +
+                        '<div id="subCommentTop">' +
+                            '<h1>' + value.name + '</h1>' +
+                            '<div id="topRightSide">' +
+                                '<div id="edit" class="button">Edit</div>' +
+                                '<div id="delete" class="button">Delete</div>'+
+                            '</div>' +
+                        '</div>' +
+                       
+                        '<h2 id="subCommentMiddle">' + value.comment + '</h2>' +
+                        
+
+                        '<div id="subCommentBottom" class="noDisplay">' +
+                            '<input class="editInput">' +
+                            '<div class="button">Submit</div>' +
+                        '</div>' +
+
+                    '</div>' +
+                '</div>' +
+
+            '</div>'
+        );
+});
 }    
 
 
@@ -76,13 +88,14 @@ $('#delete').click(function(index) {
     console.log("index" + index);
 });
 
-// $('#delete".click'click', function() {
+// $('#delete".click('click', function() {
     // console.log("delete me");
 // });
 
 //sub comment edit button
-$('#edit').on('click', '.hiddenEditContent', function() {
-    console.log('edit me ');
-  $(this).paretnt().children('div').toggleClass('noDisplay');
-    console.log($(this).value);
-  });
+$('#subCommentSection').on('click', '#edit', function() {
+    // console.log('edit me ');
+    $(this).parent().parent().next().next().toggleClass('noDisplay');
+    // console.log($(this).parent().parent().next().next().attr('id'));
+    addComments();
+});
