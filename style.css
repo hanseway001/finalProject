@@ -1,0 +1,75 @@
+body, h1, h2 {
+    padding: 0;
+    margin: 0;
+}
+html {
+    height: 100%;
+  }
+
+
+
+body {
+    background-color: aliceblue;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    padding: 0 50px;
+    font-family: Helvetica;
+}
+h1 {
+    font-size: 35px;
+}
+h2 {
+    font-size: 20px;
+    font-weight: 300;
+    padding-top: 10px;
+}
+#parentComment {
+    background-color: #fff;
+    /* width: 100%; */
+    padding: 10px 20px;
+}
+
+#subCommentSection {
+    background-color: rgb(216, 219, 218);
+    padding: 20px;
+    min-height: 100%;
+}
+#userImage {
+    width: 50px;
+    height: 50px;
+    padding: 20px;
+}
+#subComment {
+    background-color: aliceblue;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    /* min-height: 100%; */
+}
+#visable, #hiddenEditContent{
+    display: flex;
+
+}
+
+.button, #submitComment{
+    padding: 5px;
+    color: lightblue;
+}
+
+#commentCreation {
+    background-color: #fff;
+    align-content: flex-end;
+    margin-top: auto;
+    height: 100px;
+    /* position: fixed; */
+    /* position:absolute; */
+    /* position: bottom; */
+}
+
+.noDisplay {
+    /* display: none; */
+}
