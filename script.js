@@ -97,5 +97,4 @@ $('#subCommentSection').on('click', '#edit', function() {
     // console.log('edit me ');
     $(this).parent().parent().next().next().toggleClass('noDisplay');
     // console.log($(this).parent().parent().next().next().attr('id'));
-    addComments();
 });
