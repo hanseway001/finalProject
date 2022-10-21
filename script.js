@@ -12,29 +12,20 @@ let userComments = [
         comment: 'Preach!'
     },
     {
-        name: 'WhySoSerious45',
-        comment: 'Trying to decide a career path? Programming is the move. Change my mind.'
+        name: 'guest1234',
+        comment: 'Why would I change your mind? its the fastest growing industry out there...'
     },
     {
-        name: 'WhySoSerious45',
-        comment: 'Trying to decide a career path? Programming is the move. Change my mind.'
+        name: 'TheMan',
+        comment: 'Hard to argue with that'
     }
 ];
-
-// $(ParentComment).append(<h1></h1>);
-
 
 var  topComment = $('#parentComment');
 var comments = $('#subCommentSection');
 
-topComment.append('<div id="firstComment"><h2>' + userComments[0].name + '</h2><h1>' + userComments[0].comment + '</h1></div>' )
+topComment.append('<div id="firstComment"><h1>' + userComments[0].name + '</h1><h2>' + userComments[0].comment + '</h2></div>' )
 addComments();
-
-function productDelete(ctl) {
-    console.log("stupid");
-    $(ctl).parents("tr").remove();
-}
-
 
 function addComments(){
     comments.empty();
@@ -49,15 +40,13 @@ function addComments(){
                             '<div id="topRightSide">' +
                                 '<div id="edit" class="button">Edit</div>' +
                                 '<div id="delete" class="button">Delete</div>'+
+                                '<div id="'+ index +'" class="noDisplay"></div>' +
                             '</div>' +
                         '</div>' +
-                       
                         '<h2 id="subCommentMiddle">' + value.comment + '</h2>' +
-                        
-
                         '<div id="subCommentBottom" class="noDisplay">' +
-                            '<input class="editInput">' +
-                            '<div class="button">Submit</div>' +
+                            '<input id="editInput" class="editInput noDisplay" type="text" value="'+ value.comment+'">' +
+                            '<div id="editSubmit" class="button noDisplay">Submit</div>' +
                         '</div>' +
 
                     '</div>' +
@@ -83,18 +72,29 @@ document.getElementById("submitComment").addEventListener("click", function () {
 
 });
 
-// sub comment delete button
-$('#delete').click(function(index) {
-    console.log("index" + index);
+// submit for the edit comment
+$('#subCommentSection').on('click', '#editSubmit', function() {
+    // console.log('edit me ');
+    // console.log($(this).parent().parent().children().children().children('.noDisplay').attr('id'))
+    let position = $(this).parent().parent().children().children().children('.noDisplay').attr('id');
+    let changedComment = $(this).parent().children().val();
+    console.log(changedComment);
+    // let editedComment = $(this).parent().children().attr('value');
+    // console.log(editedComment);
+    // console.log($(this).parent().children('input').);
+    userComments.splice(position, 1 ,{name: userComments[position].name, comment: changedComment}); 
+    addComments();
 });
 
-// $('#delete".click('click', function() {
-    // console.log("delete me");
-// });
 
 //sub comment edit button
 $('#subCommentSection').on('click', '#edit', function() {
-    // console.log('edit me ');
     $(this).parent().parent().next().next().toggleClass('noDisplay');
-    // console.log($(this).parent().parent().next().next().attr('id'));
+    $(this).parent().parent().next().next().children().toggleClass('noDisplay');
+});
+
+$('#subCommentSection').on('click', '#delete', function() {
+    let index = $(this).next().attr('id');
+    userComments.splice(index, 1);
+    addComments();
 });
